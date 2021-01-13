@@ -1,0 +1,43 @@
+version: "3"
+services:
+  api:
+    build: ./api
+    container_name: api
+    # depends_on:
+    #     - postgres
+    command: npm run dev
+    env_file:
+      - ./config/.env.development
+    ports:
+      - 5000:${API_PORT}
+    volumes:
+      - ./api:/usr/app
+      - /usr/app/node_modules
+
+  webapp:
+    stdin_open: true
+    build: ./webapp
+    container_name: webapp
+    command: npm run dev
+    env_file:
+      - ./config/.env.development
+    ports:
+      - 8090:${PORT_CLIENT}
+    volumes:
+      - ./webapp:/usr/app
+      - /usr/app/node_modules
+
+volumes:
+  webapp-node_modules:
+  api-node_modules:
+  # postgres:
+  #     image: postgres:latest
+  #     container_name: postgres
+  #     environment:
+  #         POSTGRES_USER: ${DATABASE_USERNAME}
+  #         POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+  #         POSTGRES_DB: ${DATABASE_NAME}
+  #     ports:
+  #         - '5432:${DATABASE_PORT}'
+  #     volumes:
+  #         - ./data:/var/lib/postgresql/data

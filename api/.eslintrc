@@ -1,0 +1,25 @@
+{
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint",
+      "no-loops",
+      "prettier",
+      "simple-import-sort",
+      "import"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/eslint-recommended",
+      "plugin:@typescript-eslint/recommended",
+      "prettier"
+    ],
+    "rules": {
+      "no-loops/no-loops": 2, // 2 means throw an ERROR 
+      "no-console": 2,
+      "prettier/prettier": 2,
+      "simple-import-sort/imports": "error",
+      "simple-import-sort/exports": "error",
+      "import/no-duplicates": "error"
+    }
+  }

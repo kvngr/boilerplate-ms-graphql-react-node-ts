@@ -1,0 +1,65 @@
+{
+  "name": "boilerplate-ts-node-graphql",
+  "version": "1.0.0",
+  "description": "🚀 🎡 ⚛️ Node TypeScript with GraphQL boilerplate for friends and others made with ♥️",
+  "main": "index.js",
+  "keywords": [],
+  "author": "Kevin George",
+  "license": "ISC",
+  "scripts": {
+    "dev": "npm run check-setup && cross-env NODE_ENV=development webpack --config ./config/webpack/webpack.config.js",
+    "build": "npm run check-setup && cross-env NODE_ENV=production webpack --config ./config/webpack/webpack.config.js",
+    "start": "node build/server.bundle.js",
+    "test": "jest",
+    "check-setup": "node internals/scripts/checkNodeSetup.js",
+    "clean": "rimraf ./build",
+    "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write",
+    "lint": "eslint . --ext .ts",
+    "code-format": "npm run lint && npm run prettier-format"
+  },
+  "dependencies": {
+    "apollo-server": "^2.19.1",
+    "apollo-server-express": "^2.19.1",
+    "graphql": "^15.4.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-typescript": "^7.12.7",
+    "@types/jest": "^26.0.20",
+    "@types/node": "^14.14.20",
+    "@typescript-eslint/eslint-plugin": "^4.13.0",
+    "@typescript-eslint/parser": "^4.13.0",
+    "babel-jest": "^26.6.3",
+    "cross-env": "^7.0.3",
+    "dotenv-webpack": "^6.0.0",
+    "eslint": "^7.17.0",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-no-loops": "^0.3.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "husky": "^5.0.1",
+    "jest": "^26.6.3",
+    "lint-staged": "^10.5.3",
+    "nodemon-webpack-plugin": "^4.3.2",
+    "prettier": "^2.2.1",
+    "ts-loader": "^8.0.14",
+    "tsconfig-paths": "^3.9.0",
+    "tsconfig-paths-webpack-plugin": "^3.3.0",
+    "typescript": "^4.1.3",
+    "webpack": "^5.13.0",
+    "webpack-cli": "^4.3.1",
+    "webpack-node-externals": "^2.5.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "eslint --fix"
+    ]
+  }
+}

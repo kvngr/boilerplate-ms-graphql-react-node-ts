@@ -1,0 +1,6 @@
+{
+    "short_name": "PWA React boilerplate",
+    "name": "PWA React Sample",
+    "start_url": ".",
+    "display": "standalone"
+  }
