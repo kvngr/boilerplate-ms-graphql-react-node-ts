@@ -50,6 +50,7 @@
             "@mixins": ["src/themes/mixins"],
             "@context": ["src/core/context"],
             "@graphql": ["src/core/graphql"],
+            "@graphql/queries": ["src/core/graphql/queries"],
             "@utils": ["src/tools/utils"],
             "@hooks": ["src/tools/hooks"],
             "@assets/images": ["src/assets/images/*"]

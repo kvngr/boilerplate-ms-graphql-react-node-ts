@@ -1,15 +1,15 @@
 /* eslint-disable no-undef */
 /* eslint-disable @typescript-eslint/no-var-requires */
-
 const path = require('path');
+const { DefinePlugin } = require('webpack');
 const NodemonWebpackPlugin = require('nodemon-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
-const Dotenv = require('dotenv-webpack');
 
 const ROOT_DIRECTORY = process.cwd();
-
 const NODE_ENV = process.env.NODE_ENV;
+
+const dotenv = require('dotenv').config({ path: `../config/.env.${NODE_ENV}` });
 
 module.exports = {
     context: ROOT_DIRECTORY,
@@ -22,7 +22,7 @@ module.exports = {
         server: './src/index.ts',
     },
     output: {
-        path: path.resolve(ROOT_DIRECTORY, 'build', 'server'),
+        path: path.resolve(ROOT_DIRECTORY, 'build'),
         filename: '[name].bundle.js',
         publicPath: '/',
     },
@@ -38,13 +38,8 @@ module.exports = {
     plugins: process.env.NODE_ENV === 'development' ? [new NodemonWebpackPlugin()] : [],
     externals: [
         nodeExternals(),
-        new Dotenv({
-            path: path.resolve(ROOT_DIRECTORY, 'config', `.env.${NODE_ENV}`),
-            safe: true,
-            allowEmptyValues: true,
-            systemvars: true,
-            silent: true,
-            defaults: false,
+        new DefinePlugin({
+            'proccess.env': dotenv.parsed,
         }),
     ],
     resolve: {

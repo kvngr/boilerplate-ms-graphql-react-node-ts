@@ -3,12 +3,9 @@ import { ApolloClient, ApolloLink, InMemoryCache, NormalizedCacheObject } from '
 import { onError } from '@apollo/client/link/error';
 import { HttpLink } from '@apollo/client/link/http';
 
-const PORT_GRAPHQL = process.env.PORT_GRAPHQL;
-const BASE_URL = process.env.BASE_URL;
-const ENDPOINT_GRAPHQL = process.env.ENDPOINT_GRAPHQL;
-const API_VERSION = process.env.API_VERSION;
+const { BASE_URL, API_PORT, ROOT_ENDPOINT, API_VERSION } = process.env;
 
-const uri = `${BASE_URL}:${PORT_GRAPHQL}${ENDPOINT_GRAPHQL}${API_VERSION}`;
+const uri = `${BASE_URL}:${API_PORT}${ROOT_ENDPOINT}${API_VERSION}`;
 
 const cache: InMemoryCache = new InMemoryCache();
 

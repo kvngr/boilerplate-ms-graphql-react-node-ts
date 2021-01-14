@@ -9,6 +9,20 @@
       content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no"
     />
     <link rel="manifest" href="/manifest.json" />
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/serviceWorker.js').then(
+            registration => {
+              console.log(`Service Worker registered! Scope: ${registration.scope}`);
+            },
+            error => {
+              console.error(`Service Worker registration failed: ${error}`);
+            },
+          );
+        });
+      }
+    </script>
   </head>
 
   <body>

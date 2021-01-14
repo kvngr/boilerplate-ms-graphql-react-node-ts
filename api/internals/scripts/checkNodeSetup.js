@@ -2,19 +2,12 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-undef */
-
-const path = require('path');
 const exec = require('child_process').exec;
 const chalk = require('chalk');
 
-const ROOT_DIRECTORY = process.cwd();
+const { NODE_ENV, NODE_VERSION, NPM_VERSION } = process.env;
 
-const NODE_ENV = process.env.NODE_ENV;
-
-require('dotenv').config({ path: path.resolve(ROOT_DIRECTORY, 'config', `.env.${NODE_ENV}`) });
-
-const NODE_VERSION = process.env.NODE_VERSION;
-const NPM_VERSION = process.env.NPM_VERSION;
+require('dotenv').config({ path: `../config/.env.${NODE_ENV}` });
 
 function checkNodeVersion() {
     return new Promise((resolve) => {

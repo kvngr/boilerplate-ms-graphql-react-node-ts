@@ -1,12 +1,13 @@
 import { useQuery } from '@apollo/client';
 import { Button, PageTemplate, Select, Title } from '@components';
 import { useLanguageContext } from '@context';
+import { QUERY_BOOK_LIST } from '@graphql/queries';
 import { RouteComponentProps } from '@reach/router';
 import { BookCollection } from '@types';
 import React, { FC, MouseEvent } from 'react';
-import { QUERY_BOOK_LIST } from 'src/core/graphql/queries';
 import { useTheme } from 'src/tools/hooks';
 
+import messages from './messages';
 import { options } from './utils';
 
 interface HomePageProps extends RouteComponentProps {}
@@ -48,7 +49,7 @@ export const Home: FC<HomePageProps> = () => {
 
     return (
         <PageTemplate>
-            <Title>{translate('app.title')}</Title>
+            <Title>{translate(messages.appTitle)}</Title>
             {renderData()}
             <Button label="Change theme" onClick={setCurrentTheme} />
             <Select options={options} onChange={handleChangeLanguage} name="language" value={language} />
