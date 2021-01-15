@@ -2,10 +2,10 @@ import { useQuery } from '@apollo/client';
 import { Button, PageTemplate, Select, Title } from '@components';
 import { useLanguageContext } from '@context';
 import { QUERY_BOOK_LIST } from '@graphql/queries';
+import { useTheme } from '@hooks';
 import { RouteComponentProps } from '@reach/router';
 import { BookCollection } from '@types';
 import React, { FC, MouseEvent } from 'react';
-import { useTheme } from 'src/tools/hooks';
 
 import messages from './messages';
 import { options } from './utils';
